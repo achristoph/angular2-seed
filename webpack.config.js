@@ -15,7 +15,7 @@ var webpackConfig = {
 
   output: {
     path: './dist',
-    publicPath: 'http://localhost:8080/',
+    publicPath: 'http://localhost:8080/'
   },
 
   plugins: [
@@ -24,14 +24,15 @@ var webpackConfig = {
       minChunks: Infinity
     }),
     new CopyWebpackPlugin([{
-      from: './src/public/index.html'
+      from: './src/public'
     }])
   ],
 
   module: {
     loaders: [
       {test: /\.ts$/, loader: 'awesome-typescript-loader'},
-      {test: /\.html$/, loader: 'raw'}
+      {test: /\.html$/, loader: 'html'},
+      {test: /\.css$/, loader: 'style!css'}
     ]
   }
 
@@ -86,7 +87,7 @@ var defaultConfig = {
     clearImmediate: 0,
     setImmediate: 0
   },
-}
+};
 
 var webpackMerge = require('webpack-merge');
 module.exports = webpackMerge(defaultConfig, webpackConfig);
